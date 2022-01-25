@@ -46,5 +46,5 @@ class Table(BaseModel):
         ...
 
     @property
-    def money(self, date: datetime = datetime.today()) -> int:
+    def money(self, date: datetime = datetime.date.today()) -> int:
         ...
