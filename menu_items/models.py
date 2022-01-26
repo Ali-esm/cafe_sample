@@ -15,7 +15,9 @@ class Category(BaseModel):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='sub_categories',
                                verbose_name='Parent Category',
                                null=True, blank=True)
-    ...
+
+    def __str__(self):
+        return f'{self.name}'
 
 
 class MenuItem(BaseModel):
@@ -25,4 +27,6 @@ class MenuItem(BaseModel):
     status = models.IntegerField(choices=ITEM_STATUS, default=ITEM_STATUS.AVAILABLE)
     price = models.PositiveIntegerField(verbose_name='Price')
     discount = models.PositiveIntegerField(verbose_name='Discount', default=0)
-    ...
+
+    def __str__(self):
+        return f'{self.name} {self.category}'
