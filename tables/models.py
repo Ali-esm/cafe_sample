@@ -48,3 +48,6 @@ class Table(BaseModel):
     @property
     def money(self, date: datetime = datetime.date.today()) -> int:
         ...
+
+    def __str__(self):
+        return f'Table Number: {self.id}'
