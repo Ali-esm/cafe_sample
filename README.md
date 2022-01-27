@@ -9,7 +9,7 @@ pip install requirements.txt
 ```
 - [ ] Compleate models.
 - [ ] Implement all **Views** and **Templates**
-- [ ] Add all models to **Django admin Panel**
+- [x] Add all models to **Django admin Panel**
 
 >**Note:**
 1. Only use class view.
