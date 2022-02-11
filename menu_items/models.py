@@ -2,7 +2,7 @@ from django.db import models
 from model_utils import Choices
 
 # Create your models here.
-from core.models import BaseModel
+from core.models import BaseModel, BaseDiscount
 
 ITEM_STATUS = Choices(
     (0, 'AVAILABLE', 'Available for menu'),
@@ -26,7 +26,11 @@ class MenuItem(BaseModel):
                                  related_name='menu_items')
     status = models.IntegerField(choices=ITEM_STATUS, default=ITEM_STATUS.AVAILABLE)
     price = models.PositiveIntegerField(verbose_name='Price')
-    discount = models.PositiveIntegerField(verbose_name='Discount', default=0)
+    discount = models.ForeignKey('Discount', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} {self.category}'
+
+
+class Discount(BaseModel, BaseDiscount):
+    expire_date = models.DateField(null=True, blank=True)
